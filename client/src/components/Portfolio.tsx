@@ -71,9 +71,9 @@ export default function Portfolio() {
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-primary font-semibold">{project.category}</span>
-                  <button className="text-primary hover:text-primary/80">
+                  <a href={`/project/${project.id}`} className="text-primary hover:text-primary/80">
                     <ExternalLink className="h-4 w-4" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -81,24 +81,11 @@ export default function Portfolio() {
         </div>
 
         <div className="text-center mt-12">
-          <Button 
-            onClick={() => {
-              const additionalProjects = [
-                "Solar Panel Montaj Robotu - Yenilenebilir Enerji",
-                "Tekstil Dokuma Otomasyonu - Tekstil Sektörü", 
-                "3D Yazıcı Kontrol Sistemi - Teknoloji",
-                "Tarım Robot Sulama Sistemi - Tarım Sektörü",
-                "Elektronik Kart Test Robotu - Elektronik",
-                "Cam İşleme Otomasyonu - Cam Sektörü",
-                "Plastik Enjeksiyon Robotu - Plastik Sektörü",
-                "Medikal Cihaz Montajı - Sağlık Sektörü"
-              ];
-              alert("Diğer Projelerimiz:\n\n" + additionalProjects.join("\n• ") + "\n\nDetaylı bilgi için bizimle iletişime geçin.");
-            }}
-            className="bg-primary text-white hover:bg-primary/90 font-semibold"
-          >
-            Tüm Projeleri Görüntüle
-          </Button>
+          <a href="/projects">
+            <Button className="bg-primary text-white hover:bg-primary/90 font-semibold">
+              Tüm Projeleri Görüntüle
+            </Button>
+          </a>
         </div>
       </div>
     </section>

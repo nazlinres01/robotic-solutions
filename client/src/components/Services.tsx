@@ -72,12 +72,12 @@ export default function Services() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-              <button 
-                onClick={() => alert(`${service.title} hakkında detaylı bilgi:\n\n${service.description}\n\nDaha fazla bilgi için bizimle iletişime geçin.`)}
+              <a 
+                href={`/service/${service.id}`}
                 className="text-primary font-semibold hover:text-primary/80 inline-flex items-center transition-colors"
               >
                 Detayları Gör <ArrowRight className="ml-2 h-4 w-4" />
-              </button>
+              </a>
             </div>
           ))}
         </div>
