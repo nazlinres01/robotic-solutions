@@ -178,7 +178,9 @@ export default function AllProjects() {
                         Detayları Görüntüle
                       </Button>
                     </Link>
-                    <ExternalLink className="h-4 w-4 text-gray-400" />
+                    <Link href={`/project/${project.id}`}>
+                      <ExternalLink className="h-4 w-4 text-gray-400 hover:text-primary cursor-pointer" />
+                    </Link>
                   </div>
                 </div>
               </div>
