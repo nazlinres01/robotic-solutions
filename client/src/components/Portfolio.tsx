@@ -81,7 +81,22 @@ export default function Portfolio() {
         </div>
 
         <div className="text-center mt-12">
-          <Button className="bg-primary text-white hover:bg-primary/90 font-semibold">
+          <Button 
+            onClick={() => {
+              const additionalProjects = [
+                "Solar Panel Montaj Robotu - Yenilenebilir Enerji",
+                "Tekstil Dokuma Otomasyonu - Tekstil Sektörü", 
+                "3D Yazıcı Kontrol Sistemi - Teknoloji",
+                "Tarım Robot Sulama Sistemi - Tarım Sektörü",
+                "Elektronik Kart Test Robotu - Elektronik",
+                "Cam İşleme Otomasyonu - Cam Sektörü",
+                "Plastik Enjeksiyon Robotu - Plastik Sektörü",
+                "Medikal Cihaz Montajı - Sağlık Sektörü"
+              ];
+              alert("Diğer Projelerimiz:\n\n" + additionalProjects.join("\n• ") + "\n\nDetaylı bilgi için bizimle iletişime geçin.");
+            }}
+            className="bg-primary text-white hover:bg-primary/90 font-semibold"
+          >
             Tüm Projeleri Görüntüle
           </Button>
         </div>

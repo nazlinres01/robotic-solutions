@@ -57,7 +57,7 @@ export default function Team() {
               <img
                 src={member.image}
                 alt={`${member.name} - ${member.position}`}
-                className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20"
               />
               <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
               <p className="text-primary font-semibold mb-2">{member.position}</p>
