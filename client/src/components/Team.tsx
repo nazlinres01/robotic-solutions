@@ -16,7 +16,7 @@ const teamMembers: TeamMember[] = [
     name: "Zeynep Kaya",
     position: "Otomasyon Yazılım Uzmanı",
     experience: "9 yıl deneyim",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b5bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     linkedin: "#",
     twitter: "#",
   },

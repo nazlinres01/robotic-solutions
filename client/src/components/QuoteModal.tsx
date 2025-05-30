@@ -115,7 +115,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
                   value={formData.firstName}
                   onChange={(e) => handleInputChange("firstName", e.target.value)}
                   placeholder="Adınız"
-                  className="w-full"
+                  className="w-full text-gray-900"
                 />
               </div>
               <div>
@@ -129,7 +129,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
                   value={formData.lastName}
                   onChange={(e) => handleInputChange("lastName", e.target.value)}
                   placeholder="Soyadınız"
-                  className="w-full"
+                  className="w-full text-gray-900"
                 />
               </div>
             </div>
@@ -145,7 +145,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
                 value={formData.company}
                 onChange={(e) => handleInputChange("company", e.target.value)}
                 placeholder="Şirket adı"
-                className="w-full"
+                className="w-full text-gray-900"
               />
             </div>
 
@@ -161,7 +161,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   placeholder="email@example.com"
-                  className="w-full"
+                  className="w-full text-gray-900"
                 />
               </div>
               <div>
@@ -175,7 +175,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   placeholder="+90 555 123 45 67"
-                  className="w-full"
+                  className="w-full text-gray-900"
                 />
               </div>
             </div>
@@ -209,7 +209,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
                 placeholder="Projenizin detaylarını, ihtiyaçlarınızı ve beklentilerinizi açıklayın..."
-                className="w-full h-24 resize-none"
+                className="w-full h-24 resize-none text-gray-900"
               />
             </div>
 
