@@ -31,9 +31,8 @@ export default function Hero() {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
                 onClick={scrollToContact}
-                className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold"
+                className="bg-green-600 text-white hover:bg-green-700 border-2 border-green-600 font-semibold"
               >
                 <Phone className="mr-2 h-4 w-4" />
                 İletişime Geç
