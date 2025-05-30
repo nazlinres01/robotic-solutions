@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Phone, Mail, Building, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +28,20 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
     service: preselectedService || "",
     message: "",
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      // Modal açıldığında sayfayı en üste scroll et
+      window.scrollTo(0, 0);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
@@ -72,8 +86,8 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 p-4 pt-8 overflow-y-auto">
+      <div className="bg-white rounded-2xl max-w-2xl w-full my-8">
         <div className="p-6 border-b border-gray-200 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-gray-900">Hızlı Teklif Talebi</h2>
           <button

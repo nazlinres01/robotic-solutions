@@ -118,6 +118,158 @@ const projects = {
       "Müşteri şikayetlerinde %85 azalma"
     ],
     technologies: ["Deep Learning", "Multi-Camera", "Real-time Analytics", "Edge Computing"]
+  },
+  "solar-panel": {
+    title: "Solar Panel Montaj Robotu",
+    description: "Yenilenebilir enerji için otomatik solar panel montaj sistemi",
+    category: "Yenilenebilir Enerji",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "SolarTech Energy",
+    duration: "6 ay",
+    team: "10 uzman",
+    completion: "2022",
+    challenge: "Çatı üzerinde güvenli ve hızlı solar panel montajı gerekliydi. Manuel montaj hem tehlikeli hem de yavaştı.",
+    solution: "Özel tasarım robot kolu ile otomatik panel montajı, GPS navigasyon ve güvenlik sensörleri entegre edildi.",
+    results: [
+      "Montaj hızında %150 artış",
+      "İş güvenliğinde %100 iyileşme",
+      "Montaj hatalarında %90 azalma",
+      "Operasyon maliyetinde %35 tasarruf"
+    ],
+    technologies: ["Custom Robot", "GPS Navigation", "Safety Sensors", "Power Tools"]
+  },
+  "textile-weaving": {
+    title: "Tekstil Dokuma Otomasyonu",
+    description: "AI destekli kalite kontrol ile tekstil dokuma robot sistemi",
+    category: "Tekstil Sektörü",
+    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "TextilePro A.Ş.",
+    duration: "7 ay",
+    team: "11 uzman",
+    completion: "2022",
+    challenge: "Yüksek kalitede tekstil üretimi ve defekt tespiti için otomatik sistem gerekiyordu.",
+    solution: "AI tabanlı görüntü işleme ile defekt tespiti, otomatik iplik değişimi ve kalite kontrol sistemi kuruldu.",
+    results: [
+      "Kalite kontrolde %98 doğruluk",
+      "Üretim hızında %120 artış",
+      "Defekt oranında %85 azalma",
+      "Manuel kontrol ihtiyacında %70 azalma"
+    ],
+    technologies: ["AI Vision", "Textile Robots", "Quality Control", "Auto Threading"]
+  },
+  "3d-printer": {
+    title: "3D Yazıcı Kontrol Sistemi",
+    description: "Endüstriyel 3D yazıcılar için akıllı kontrol ve monitoring sistemi",
+    category: "Teknoloji",
+    image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "TechPrint Ltd.",
+    duration: "5 ay",
+    team: "7 uzman",
+    completion: "2022",
+    challenge: "Çoklu 3D yazıcı kontrolü ve uzaktan monitoring sistemi gerekiyordu.",
+    solution: "Merkezi kontrol sistemi, uzaktan izleme ve otomatik filament değişimi sistemi geliştirildi.",
+    results: [
+      "Yazıcı verimliliğinde %140 artış",
+      "Hata oranında %80 azalma",
+      "Uzaktan kontrol %100 başarı",
+      "Bakım maliyetinde %50 tasarruf"
+    ],
+    technologies: ["Central Control", "Remote Monitoring", "Auto Filament", "IoT Sensors"]
+  },
+  "agriculture-irrigation": {
+    title: "Tarım Robot Sulama Sistemi",
+    description: "IoT sensörler ile akıllı tarım robot sulama otomasyonu",
+    category: "Tarım Sektörü",
+    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "AgroTech Çiftlik",
+    duration: "8 ay",
+    team: "9 uzman",
+    completion: "2022",
+    challenge: "Geniş tarım alanında hassas sulama ve gübre verme sistemi gerekiyordu.",
+    solution: "Otonom tarım robotu, toprak sensörleri ve akıllı sulama algoritması geliştirildi.",
+    results: [
+      "Su tasarrufunda %60 artış",
+      "Ürün veriminde %45 artış",
+      "İşgücü ihtiyacında %80 azalma",
+      "Gübre kullanımında %40 optimizasyon"
+    ],
+    technologies: ["Autonomous Robot", "Soil Sensors", "Smart Irrigation", "GPS Navigation"]
+  },
+  "electronics-testing": {
+    title: "Elektronik Kart Test Robotu",
+    description: "Yüksek hassasiyetli elektronik kart test ve kalite kontrol sistemi",
+    category: "Elektronik",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "ElectroTest Inc.",
+    duration: "6 ay",
+    team: "8 uzman",
+    completion: "2022",
+    challenge: "Mikroelektronik komponentlerin hızlı ve doğru test edilmesi gerekiyordu.",
+    solution: "Hassas test probes, otomatik kart değiştirme ve real-time test sonuçları sistemi kuruldu.",
+    results: [
+      "Test hızında %300 artış",
+      "Test doğruluğunda %99.5 başarı",
+      "Hatalı kart tespitinde %95 iyileşme",
+      "Test maliyetinde %55 tasarruf"
+    ],
+    technologies: ["Precision Probes", "Auto Handler", "Real-time Testing", "Quality Analytics"]
+  },
+  "glass-processing": {
+    title: "Cam İşleme Otomasyonu",
+    description: "Hassas cam kesme ve işleme için robot destekli otomasyon sistemi",
+    category: "Cam Sektörü",
+    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "GlassTech Fabrika",
+    duration: "9 ay",
+    team: "12 uzman",
+    completion: "2021",
+    challenge: "Hassas cam kesimi ve güvenli cam taşıma sistemi gerekiyordu.",
+    solution: "Lazer kesim robotu, vakum tutma sistemi ve otomatik cam taşıma bandı kuruldu.",
+    results: [
+      "Kesim hassasiyetinde %99 doğruluk",
+      "Cam kırılma oranında %90 azalma",
+      "Üretim hızında %160 artış",
+      "İş güvenliğinde %100 iyileşme"
+    ],
+    technologies: ["Laser Cutting", "Vacuum Handling", "Auto Conveyor", "Safety Systems"]
+  },
+  "plastic-injection": {
+    title: "Plastik Enjeksiyon Robotu",
+    description: "Yüksek hızlı plastik enjeksiyon kalıplama robot otomasyonu",
+    category: "Plastik Sektörü",
+    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "PlasticWorks Ltd.",
+    duration: "7 ay",
+    team: "10 uzman",
+    completion: "2021",
+    challenge: "Yüksek sıcaklıkta plastik parça üretimi ve otomatik kalıp değişimi gerekiyordu.",
+    solution: "Sıcaklığa dayanıklı robot kolu, otomatik kalıp değiştirme ve parça kontrolü sistemi geliştirildi.",
+    results: [
+      "Üretim hızında %180 artış",
+      "Kalıp değişim süresi %70 azaldı",
+      "Hatalı parça oranında %85 azalma",
+      "Operasyon verimliliğinde %50 artış"
+    ],
+    technologies: ["Heat Resistant Robot", "Auto Mold Change", "Part Inspection", "Temperature Control"]
+  },
+  "medical-assembly": {
+    title: "Medikal Cihaz Montajı",
+    description: "Steril ortamda medikal cihaz montajı için özel robot sistemi",
+    category: "Sağlık Sektörü",
+    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    client: "MedicalTech Corp.",
+    duration: "10 ay",
+    team: "14 uzman",
+    completion: "2021",
+    challenge: "FDA standartlarında steril ortamda hassas medikal cihaz montajı gerekiyordu.",
+    solution: "Cleanroom uyumlu robot, sterilizasyon sistemi ve FDA uyumlu kayıt sistemi kuruldu.",
+    results: [
+      "FDA compliance %100",
+      "Sterilizasyon başarısı %99.99",
+      "Montaj hassasiyeti ±0.001mm",
+      "İzlenebilirlik %100 sağlandı"
+    ],
+    technologies: ["Cleanroom Robot", "Sterilization", "FDA Tracking", "Precision Assembly"]
   }
 };
 
