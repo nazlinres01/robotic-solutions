@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import type { InsertContact } from "@shared/schema";
+import { type InsertContact } from "@shared/schema";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -46,13 +46,16 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
       const response = await apiRequest("POST", "/api/contacts", data);
-      return response.json();
+      return response.data;
     },
     onSuccess: () => {
       toast({
-        title: "Başarılı!",
-        description: "Teklif talebiniz alındı. En kısa sürede size dönüş yapacağız.",
+        title: "Teklif talebiniz alındı!",
+        description: "En kısa sürede size geri dönüş yapacağız.",
       });
+      queryClient.invalidateQueries({ queryKey: ["/api/contacts"] });
+      onClose();
+      // Formu sıfırla
       setFormData({
         firstName: "",
         lastName: "",
@@ -62,13 +65,11 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
         service: "",
         message: "",
       });
-      onClose();
-      queryClient.invalidateQueries({ queryKey: ["/api/contacts"] });
     },
     onError: () => {
       toast({
         title: "Hata!",
-        description: "Teklif talebi gönderilirken bir hata oluştu. Lütfen tekrar deneyin.",
+        description: "Teklif talebiniz gönderilemedi. Lütfen tekrar deneyin.",
         variant: "destructive",
       });
     },
@@ -86,142 +87,149 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }: Quot
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 p-4 pt-8 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-2xl w-full my-8">
-        <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-gray-900">Hızlı Teklif Talebi</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <X className="h-6 w-6" />
-          </button>
-        </div>
-
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                <User className="inline h-4 w-4 mr-1" />
-                Ad
-              </label>
-              <Input
-                type="text"
-                required
-                value={formData.firstName}
-                onChange={(e) => handleInputChange("firstName", e.target.value)}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                <User className="inline h-4 w-4 mr-1" />
-                Soyad
-              </label>
-              <Input
-                type="text"
-                required
-                value={formData.lastName}
-                onChange={(e) => handleInputChange("lastName", e.target.value)}
-                className="w-full"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              <Building className="inline h-4 w-4 mr-1" />
-              Firma
-            </label>
-            <Input
-              type="text"
-              required
-              value={formData.company}
-              onChange={(e) => handleInputChange("company", e.target.value)}
-              className="w-full"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                <Mail className="inline h-4 w-4 mr-1" />
-                E-posta
-              </label>
-              <Input
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                <Phone className="inline h-4 w-4 mr-1" />
-                Telefon
-              </label>
-              <Input
-                type="tel"
-                required
-                value={formData.phone}
-                onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Hizmet Türü
-            </label>
-            <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Seçiniz..." />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="robot-programming">Robot Programlama</SelectItem>
-                <SelectItem value="automation">Otomasyon Sistemleri</SelectItem>
-                <SelectItem value="vision">Görüntü İşleme</SelectItem>
-                <SelectItem value="data-analysis">Veri Analizi</SelectItem>
-                <SelectItem value="maintenance">Bakım & Destek</SelectItem>
-                <SelectItem value="training">Eğitim & Danışmanlık</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Proje Detayları
-            </label>
-            <Textarea
-              rows={4}
-              required
-              placeholder="Projeniz hakkında kısa bilgi verin..."
-              value={formData.message}
-              onChange={(e) => handleInputChange("message", e.target.value)}
-              className="w-full"
-            />
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button
-              type="button"
-              variant="outline"
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
+      <div className="flex min-h-full items-start justify-center p-4 pt-4">
+        <div className="bg-white rounded-2xl max-w-2xl w-full mt-4 mb-8">
+          <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-gray-900">Hızlı Teklif Talebi</h2>
+            <button
               onClick={onClose}
-              className="flex-1"
+              className="text-gray-400 hover:text-gray-600 transition-colors"
             >
-              İptal
-            </Button>
-            <Button
-              type="submit"
-              disabled={contactMutation.isPending}
-              className="flex-1 bg-primary text-white hover:bg-primary/90 font-semibold"
-            >
-              {contactMutation.isPending ? "Gönderiliyor..." : "Teklif Talebi Gönder"}
-            </Button>
+              <X className="h-6 w-6" />
+            </button>
           </div>
-        </form>
+
+          <form onSubmit={handleSubmit} className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <User className="h-4 w-4 inline mr-1" />
+                  Ad
+                </label>
+                <Input
+                  type="text"
+                  required
+                  value={formData.firstName}
+                  onChange={(e) => handleInputChange("firstName", e.target.value)}
+                  placeholder="Adınız"
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <User className="h-4 w-4 inline mr-1" />
+                  Soyad
+                </label>
+                <Input
+                  type="text"
+                  required
+                  value={formData.lastName}
+                  onChange={(e) => handleInputChange("lastName", e.target.value)}
+                  placeholder="Soyadınız"
+                  className="w-full"
+                />
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <Building className="h-4 w-4 inline mr-1" />
+                Şirket
+              </label>
+              <Input
+                type="text"
+                required
+                value={formData.company}
+                onChange={(e) => handleInputChange("company", e.target.value)}
+                placeholder="Şirket adı"
+                className="w-full"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Mail className="h-4 w-4 inline mr-1" />
+                  E-posta
+                </label>
+                <Input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  placeholder="email@example.com"
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Phone className="h-4 w-4 inline mr-1" />
+                  Telefon
+                </label>
+                <Input
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange("phone", e.target.value)}
+                  placeholder="+90 555 123 45 67"
+                  className="w-full"
+                />
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Hizmet Türü
+              </label>
+              <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Hizmet seçiniz" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="endüstriyel-otomasyon">Endüstriyel Otomasyon</SelectItem>
+                  <SelectItem value="robot-yazılımı">Robot Yazılımı</SelectItem>
+                  <SelectItem value="ai-görüntü-işleme">AI & Görüntü İşleme</SelectItem>
+                  <SelectItem value="özel-robot-tasarımı">Özel Robot Tasarımı</SelectItem>
+                  <SelectItem value="iot-entegrasyon">IoT Entegrasyon</SelectItem>
+                  <SelectItem value="kalite-kontrol">Kalite Kontrol Sistemleri</SelectItem>
+                  <SelectItem value="diğer">Diğer</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Proje Detayları
+              </label>
+              <Textarea
+                required
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                placeholder="Projenizin detaylarını, ihtiyaçlarınızı ve beklentilerinizi açıklayın..."
+                className="w-full h-24 resize-none"
+              />
+            </div>
+
+            <div className="flex gap-3 justify-end">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onClose}
+                className="px-6"
+              >
+                İptal
+              </Button>
+              <Button
+                type="submit"
+                disabled={contactMutation.isPending}
+                className="flex-1 bg-primary text-white hover:bg-primary/90 font-semibold"
+              >
+                {contactMutation.isPending ? "Gönderiliyor..." : "Teklif Talebi Gönder"}
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
