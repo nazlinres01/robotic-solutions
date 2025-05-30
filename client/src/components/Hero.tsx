@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Play, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import QuoteModal from "@/components/QuoteModal";
 
 export default function Hero() {
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  
   const scrollToContact = () => {
     const element = document.getElementById("iletisim");
     if (element) {
@@ -31,7 +35,7 @@ export default function Hero() {
               </Button>
               <Button
                 size="lg"
-                onClick={scrollToContact}
+                onClick={() => setIsQuoteModalOpen(true)}
                 className="bg-green-600 text-white hover:bg-green-700 border-2 border-green-600 font-semibold"
               >
                 <Phone className="mr-2 h-4 w-4" />
@@ -49,6 +53,11 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      
+      <QuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+      />
     </section>
   );
 }

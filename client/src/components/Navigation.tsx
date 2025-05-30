@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Bot, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import QuoteModal from "@/components/QuoteModal";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +78,7 @@ export default function Navigation() {
               İletişim
             </button>
             <Button
-              onClick={() => scrollToSection("iletisim")}
+              onClick={() => setIsQuoteModalOpen(true)}
               className="bg-primary text-white hover:bg-primary/90 font-medium"
             >
               Teklif Al
@@ -134,7 +136,7 @@ export default function Navigation() {
                 İletişim
               </button>
               <Button
-                onClick={() => scrollToSection("iletisim")}
+                onClick={() => setIsQuoteModalOpen(true)}
                 className="bg-primary text-white hover:bg-primary/90 font-medium w-full mt-2"
               >
                 Teklif Al
@@ -143,6 +145,11 @@ export default function Navigation() {
           </div>
         )}
       </div>
+      
+      <QuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+      />
     </nav>
   );
 }
